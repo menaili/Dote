@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class,'requests');
     }
+
+    public function phone()
+    {
+        return $this->hasOne(Phone::class);
+    }
 }
