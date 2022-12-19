@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FreindController;
+use App\Http\Controllers\LinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,16 @@ Route::get('/Profile', [DoController::class,'index']);
 
 Route::post('/get-token', [Controller::class,'login']);
 
-Route::resource('/Applications', ApplicationController::class);
+    Route::resource('/Applications', ApplicationController::class);
+  
+    Route::resource('/Freinds', FreindController::class);
 
-Route::resource('/Freinds', FreindController::class);
-
+    Route::resource('/Links', LinkController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+
+
+
 });

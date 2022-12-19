@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class LinkController extends Controller
 {
@@ -24,7 +26,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -35,7 +37,20 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'url' => 'required|min:3|max:255',
+                     
+        ]);
+
+        Link::create([
+            'name'=>$request->name,
+            'url'=>$request->url,
+            'application_id'=>$request->application_id,
+            'user_id'=>$request->user_id,
+
+        ]);
     }
 
     /**
@@ -67,9 +82,20 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'url' => 'required|min:3|max:255',
+                     
+        ]);
+
+        $link = Link::findorFail($request->id);
+ 
+        $link->name = $request->name;
+        $link->url = $request->url;
+        $link->save();
     }
 
     /**
@@ -80,6 +106,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        Link::where('id', '13')->delete();
     }
 }

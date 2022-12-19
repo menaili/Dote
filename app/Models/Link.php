@@ -13,6 +13,7 @@ class Link extends Model
         'name',
         'url',
         'application_id',
+        'user_id'
     ];
 
     public function application()
