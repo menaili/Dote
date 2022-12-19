@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             ApplicationSeeder::class,
             LinkSeeder::class,
             AdressSeeder::class,
-            Phone::class
+            PhoneSeeder::class,
+            FreindSeeder::class
+
 
 
 

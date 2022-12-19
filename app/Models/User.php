@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Phone::class);
     }
+
+    public function link()
+    {
+        return $this->hasMany(Link::class);
+    }
 }

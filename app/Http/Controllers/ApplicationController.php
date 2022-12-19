@@ -14,7 +14,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        $applications = Application::with('category')->get();
+        return $applications;
     }
 
     /**

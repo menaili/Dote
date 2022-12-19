@@ -12,9 +12,10 @@ class FreindController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $freinds = Freind::where('user_id',$request->id)->get();
+        return $freinds;
     }
 
     /**
