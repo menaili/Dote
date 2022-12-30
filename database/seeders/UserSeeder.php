@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'name'=> 'Menaili Haroun Errachide',
             'email'=> 'menailimic@gmail.com',
             'position'=> 'Backend',
+            'password'=> Hash::make('profilo2023')
         ]);
 
 
@@ -27,18 +28,24 @@ class UserSeeder extends Seeder
             'name'=> 'Farhi Oussama baha',
             'email'=> 'farhiouss@gmail.com',
             'position'=> 'frontend',
+            'password'=> Hash::make('profilo2023')
+
         ]);
 
         User::create([
             'name'=> 'Jakoub',
             'email'=> 'jakoub16@gmail.com',
             'position'=> 'ui designer',
+            'password'=> Hash::make('profilo2023')
+
         ]);
 
         User::create([
             'name'=> 'Riyad Djeddah',
             'email'=> 'riyad41@gmail.com',
             'position'=> 'frontend',
+            'password'=> Hash::make('profilo2023')
+
         ]);
     }
 }

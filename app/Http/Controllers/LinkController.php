@@ -104,8 +104,8 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link)
+    public function destroy(Request $request)
     {
-        Link::where('id', '13')->delete();
+        Link::where('id', $request->id)->delete();
     }
 }

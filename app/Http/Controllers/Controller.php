@@ -12,6 +12,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
+
 
 class Controller extends BaseController
 {
@@ -27,5 +30,36 @@ class Controller extends BaseController
 
     }
 
+    //---------secces----------error---------------------------------
+    public function success(
+        mixed $data,
+        int $status = 200,
+        bool $success = true,
+        string $message = "success",
+    ): JsonResponse
+    {
+        return Response::json([
+            "status"  => $status,
+            "success" => $success,
+            "message" => $message,
+            "result"  => $data,
+        ], $status);
+    }
+
+    public function error(
+        mixed $data,
+        int $status = 400,
+        bool $success = false,
+        string $message = "failed",
+    ): JsonResponse
+    {
+        return Response::json([
+            "status"  => $status,
+            "success" => $success,
+            "message" => $message,
+            ...$data,
+        ], $status);
+    }
+    //---------secces----------error---------------------------------
     
 }
