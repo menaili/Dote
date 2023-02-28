@@ -47,16 +47,15 @@ class AuthController extends Controller
         }
 
         $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
-        $token->expires_at = Carbon::now()->addWeeks(1);
-        $token->save();
+        $tokenResult = $user->createToken('mobile',["*"])->plainTextToken;
+        //$token = $tokenResult->plainTextToken;
+        //$token->expires_at = Carbon::now()->addWeeks(1);
+        //$token->save();
 
         return response()->json(['data' =>[
             'user' => Auth::user(),
-            'access_token' => $tokenResult->accessToken,
+            'access_token' => $tokenResult,
             'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
         ]]);
 
 

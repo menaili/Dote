@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Link;
 
 use App\Models\User;
 use App\Models\Phone;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -18,7 +19,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+    
+        $id = Auth::user()->id;
+        $profile = Link::with('user','application')
+        ->where('user_id', Auth::user())
+        ->get();
+        return $id;
     }
 
     /**
