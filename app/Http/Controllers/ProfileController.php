@@ -20,9 +20,9 @@ class ProfileController extends Controller
     public function index()
     {
     
-        $id = Auth::user()->id;
+        $id = Auth::user();
         $profile = Link::with('user','application')
-        ->where('user_id', Auth::user())
+        ->where('user_id', $id)
         ->get();
         return $id;
     }
