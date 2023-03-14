@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\FreindController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CurriculumController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,8 @@ Route::get('/ProfileST', [DoController::class,'index']);
 
     Route::resource('/Profile', ProfileController::class)->middleware('auth:sanctum');
     Route::resource('/Links', LinkController::class)->middleware('auth:sanctum');
+    Route::resource('/CV', CurriculumController::class)->middleware('auth:sanctum');
+
 
 // Route::group([
 //     'prefixe'   => 'auth'

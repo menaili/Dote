@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class CurriculumController extends Controller
 {
@@ -35,7 +37,23 @@ class CurriculumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user()->id;
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'position' => 'required|min:3|max:255',
+            'bio' => 'required|min:3|max:300',
+            'picture' => 'required|min:3|max:300',
+                     
+        ]);
+
+        Curriculum::create([
+            'user_id'=>$user,
+            'name'=>$request->name,
+            'position'=>$request->position,
+            'bio'=>$request->bio,
+            'picture'=>$request->picture,
+        ]);
     }
 
     /**
@@ -69,7 +87,22 @@ class CurriculumController extends Controller
      */
     public function update(Request $request, Curriculum $curriculum)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'position' => 'required|min:3|max:255',
+            'bio' => 'required|min:3|max:300',
+            'picture' => 'required|min:3|max:300',
+                     
+        ]);
+
+        $CV = Curriculum::findorFail($request->id);
+ 
+        $CV->name = $request->name;
+        $CV->position = $request->position;
+        $CV->bio = $request->bio;
+        $CV->picture = $request->picture;
+        $CV->save();
     }
 
     /**
@@ -78,8 +111,9 @@ class CurriculumController extends Controller
      * @param  \App\Models\Curriculum  $curriculum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curriculum $curriculum)
+    public function destroy(Request $request)
     {
-        //
+        Curriculum::where('id', $request->id)->delete();
+
     }
 }
