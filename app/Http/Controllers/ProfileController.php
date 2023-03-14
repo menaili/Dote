@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Link;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Phone;
@@ -17,14 +18,15 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-    
-        $id = Auth::user();
+ 
+    $user = Auth::user()->id;
+
         $profile = Link::with('user','application')
-        ->where('user_id', $id)
+        ->where('user_id', $user)
         ->get();
-        return $id;
+        return $profile;
     }
 
     /**
@@ -90,7 +92,7 @@ class ProfileController extends Controller
                      
         ]);
 
-        $profile = User::findorFail($request->id);
+        $profile = User::findorFail(Auth::user()->id);
  
         $profile->name = $request->name;
         $profile->position = $request->position;
@@ -103,7 +105,7 @@ class ProfileController extends Controller
 
         if($countPhone == 0){
         $phone = new Phone([
-            'user_id'=> $profile->id,
+            'user_id'=> Auth::user()->id,
             'adress_id'=> $request->adress_id,
             'number'=>  $request->numberPhone,
         ]);

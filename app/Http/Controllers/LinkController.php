@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -37,6 +37,7 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user()->id;
         $validated = Validator::make($request->all(),
         [
             'name' => 'required|min:3|max:255',
@@ -48,7 +49,7 @@ class LinkController extends Controller
             'name'=>$request->name,
             'url'=>$request->url,
             'application_id'=>$request->application_id,
-            'user_id'=>$request->user_id,
+            'user_id'=>$user,
 
         ]);
     }

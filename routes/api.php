@@ -21,7 +21,7 @@ use App\Http\Controllers\ProfileController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/Profile', [DoController::class,'index']);
+Route::get('/ProfileST', [DoController::class,'index']);
 
 // Route::post('/get-token', [Controller::class,'login']);
 
@@ -29,9 +29,9 @@ Route::get('/Profile', [DoController::class,'index']);
   
     Route::resource('/Freinds', FreindController::class);
 
-    Route::resource('/Profile', ProfileController::class);
 
-    Route::resource('/Links', LinkController::class);
+    Route::resource('/Profile', ProfileController::class)->middleware('auth:sanctum');
+    Route::resource('/Links', LinkController::class)->middleware('auth:sanctum');
 
 // Route::group([
 //     'prefixe'   => 'auth'
@@ -45,8 +45,5 @@ Route::post('register', [AuthController::class,'register']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-
-
-
 
 });
