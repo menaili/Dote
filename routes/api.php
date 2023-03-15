@@ -12,6 +12,7 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurriculumController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WorkController;
 
 /*
@@ -38,6 +39,7 @@ Route::get('/ProfileST', [DoController::class,'index']);
     Route::resource('/CV', CurriculumController::class)->middleware('auth:sanctum');
     Route::resource('/Education', EducationController::class)->middleware('auth:sanctum');
     Route::resource('/Work', WorkController::class)->middleware('auth:sanctum');
+    Route::resource('/Skill', SkillController::class)->middleware('auth:sanctum');
 
 
 // Route::group([

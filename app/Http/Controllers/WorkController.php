@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class WorkController extends Controller
 {
@@ -24,7 +27,7 @@ class WorkController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +38,27 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'position' => 'required|min:3|max:255',
+            'company' => 'required|min:3|max:300',
+            'description' => 'required|min:3|max:300',
+            'start_date' => 'required',
+            'end_date' => 'required',
+
+                     
+        ]);
+
+        Work::create([
+            'curriculum_id'=>$request->curriculum_id,
+            'position'=>$request->position,
+            'company'=>$request->company,
+            'description'=>$request->description,
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+
+        ]);
     }
 
     /**
@@ -44,7 +67,7 @@ class WorkController extends Controller
      * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function show(Work $work)
+    public function show(Request $request)
     {
         //
     }
@@ -69,7 +92,26 @@ class WorkController extends Controller
      */
     public function update(Request $request, Work $work)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'position' => 'required|min:3|max:255',
+            'company' => 'required|min:3|max:300',
+            'description' => 'required|min:3|max:300',
+            'start_date' => 'required',
+            'end_date' => 'required',
+
+                     
+        ]);
+
+        $work = Work::findorFail($request->id);
+ 
+        $work->position = $request->position;
+        $work->company = $request->company;
+        $work->description = $request->description;
+        $work->start_date = $request->start_date;
+        $work->end_date = $request->end_date;
+        $work->save();
     }
 
     /**
@@ -78,8 +120,8 @@ class WorkController extends Controller
      * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Work $work)
+    public function destroy(Work $work, Request $request)
     {
-        //
+        Work::where('id', $request->id)->delete();
     }
 }

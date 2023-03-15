@@ -10,7 +10,7 @@ class Skill extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'curricula_id',
+        'curriculum_id',
     ];
 
     public function curricula()

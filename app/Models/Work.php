@@ -14,7 +14,7 @@ class Work extends Model
         'description',
         'start_date',
         'end_date',
-        'curricula_id',
+        'curriculum_id',
 
     ];
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class SkillController extends Controller
 {
@@ -35,7 +38,18 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'name' => 'required|max:255',
+            
+        ]);
+
+        Skill::create([
+            'curriculum_id'=>$request->curriculum_id,
+            'name'=>$request->name,
+            
+        ]);
     }
 
     /**
@@ -69,7 +83,16 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'name' => 'required|max:255',
+            
+        ]);
+
+        $skill = Skill::findorFail($request->id);
+        $skill->name = $request->name;
+        $skill->save();
     }
 
     /**
@@ -78,8 +101,8 @@ class SkillController extends Controller
      * @param  \App\Models\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(Skill $skill, Request $request)
     {
-        //
+        Skill::where('id', $request->id)->delete();
     }
 }
