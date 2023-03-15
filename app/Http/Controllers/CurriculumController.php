@@ -16,7 +16,12 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->id;
+
+        $cv = Curriculum::with('education')
+        ->where('user_id', $user)
+        ->get();
+        return $cv;
     }
 
     /**

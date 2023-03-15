@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Education;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class EducationController extends Controller
 {
@@ -35,7 +38,27 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'university' => 'required|min:3|max:255',
+            'level' => 'required|min:3|max:300',
+            'feild' => 'required|min:3|max:300',
+            'start_date' => 'required',
+            'end_date' => 'required',
+
+                     
+        ]);
+
+        Education::create([
+            'curricula_id'=>$request->curricula_id,
+            'university'=>$request->university,
+            'level'=>$request->level,
+            'feild'=>$request->feild,
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+
+        ]);
     }
 
     /**
