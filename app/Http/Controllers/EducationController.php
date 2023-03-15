@@ -51,7 +51,7 @@ class EducationController extends Controller
         ]);
 
         Education::create([
-            'curricula_id'=>$request->curricula_id,
+            'curriculum_id'=>$request->curriculum_id,
             'university'=>$request->university,
             'level'=>$request->level,
             'feild'=>$request->feild,
@@ -92,7 +92,26 @@ class EducationController extends Controller
      */
     public function update(Request $request, Education $education)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'curricula_id' => 'required|min:3|max:255',
+            'university' => 'required|min:3|max:255',
+            'level' => 'required|min:3|max:300',
+            'feild' => 'required|min:3|max:300',
+            'start_date' => 'required',
+            'end_date' => 'required',
+
+                     
+        ]);
+
+        $education = Education::findorFail($request->id);
+ 
+        $education->university = $request->university;
+        $education->level = $request->level;
+        $education->feild = $request->feild;
+        $education->start_date = $request->start_date;
+        $education->end_date = $request->end_date;
+        $education->save();
     }
 
     /**
@@ -101,8 +120,8 @@ class EducationController extends Controller
      * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Education $education)
+    public function destroy(Request $request)
     {
-        //
+        Education::where('id', $request->id)->delete();
     }
 }

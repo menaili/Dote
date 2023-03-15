@@ -14,7 +14,7 @@ class Education extends Model
         'feild',
         'start_date',
         'end_date',
-        'curricula_id',
+        'curriculum_id',
 
     ];
 
