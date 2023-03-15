@@ -22,10 +22,10 @@ class ProfileController extends Controller
     {
  
     $user = Auth::user()->id;
-
-        $profile = Link::with('user','application')
-        ->where('user_id', $user)
+        $profile = User::with('phone.adress','link.application.category','curriculum.education','curriculum.work','curriculum.skill','curriculum.language','curriculum.contact','curriculum.gallery')
+        ->where('id', $user)
         ->get();
+
         return $profile;
     }
 

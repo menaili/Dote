@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->hasMany(Link::class);
     }
 
+    // public function application()
+    // {
+    //     return $this->hasManyThrough(Application::class, Link::class);
+    // }
+
     public function curriculum()
     {
         return $this->hasMany(Curriculum::class);
