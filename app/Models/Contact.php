@@ -12,7 +12,7 @@ class Contact extends Model
         'phone',
         'email',
         'location',
-        'curricula_id',
+        'curriculum_id',
 
     ];
 

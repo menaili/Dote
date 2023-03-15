@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::get('/ProfileST', [DoController::class,'index']);
     Route::resource('/Work', WorkController::class)->middleware('auth:sanctum');
     Route::resource('/Skill', SkillController::class)->middleware('auth:sanctum');
     Route::resource('/Language', LanguageController::class)->middleware('auth:sanctum');
+    Route::resource('/Contact', ContactController::class)->middleware('auth:sanctum');
 
 
 // Route::group([

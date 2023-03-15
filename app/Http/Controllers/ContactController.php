@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class ContactController extends Controller
 {
@@ -35,7 +38,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'phone' => 'required|numeric|min:0',
+            'email' => 'required|min:1|max:255',
+            'location' => 'required|min:1|max:255',
+
+        ]);
+
+
+        
+        Contact::create([
+            'curriculum_id'=>$request->curriculum_id,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'location'=>$request->location,
+
+        ]);
+        
     }
 
     /**
@@ -69,7 +89,19 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'phone' => 'required|numeric|min:0',
+            'email' => 'required|min:1|max:255',
+            'location' => 'required|min:1|max:255',
+
+        ]);
+
+        $contact = Contact::findorFail($request->id);
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->location = $request->location;
+        $contact->save();
     }
 
     /**
@@ -78,8 +110,9 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact, Request $request)
     {
-        //
+        Contact::where('id', $request->id)->delete();
+
     }
 }
