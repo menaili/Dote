@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class LanguageController extends Controller
 {
@@ -35,7 +38,21 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'level' => 'required|min:1|max:255',
+        ]);
+
+
+        if($validated){
+        Language::create([
+            'curriculum_id'=>$request->curriculum_id,
+            'name'=>$request->name,
+            'level'=>$request->level,
+
+        ]);
+        }
     }
 
     /**
@@ -69,7 +86,16 @@ class LanguageController extends Controller
      */
     public function update(Request $request, Language $language)
     {
-        //
+        $validated = Validator::make($request->all(),
+        [
+            'name' => 'required|min:3|max:255',
+            'level' => 'required|min:1|max:255',
+        ]);
+
+        $language = Language::findorFail($request->id);
+        $language->name = $request->name;
+        $language->level = $request->level;
+        $language->save();
     }
 
     /**
@@ -78,8 +104,8 @@ class LanguageController extends Controller
      * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Language $language)
+    public function destroy(Language $language, Request $request)
     {
-        //
+        Language::where('id', $request->id)->delete();
     }
 }

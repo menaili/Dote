@@ -40,7 +40,6 @@ class SkillController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'curricula_id' => 'required|min:3|max:255',
             'name' => 'required|max:255',
             
         ]);

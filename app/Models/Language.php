@@ -11,7 +11,7 @@ class Language extends Model
     protected $fillable = [
         'name',
         'level',
-        'curricula_id',
+        'curriculum_id',
         ];
 
     public function curricula()
