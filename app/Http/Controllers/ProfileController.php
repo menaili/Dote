@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,7 @@ class ProfileController extends Controller
         ->where('id', $user)
         ->get();
 
-        return $profile;
+        return $this->success(TestResource::collection($profile));
     }
 
     /**
