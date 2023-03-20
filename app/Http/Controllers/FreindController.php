@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Freind;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+
 
 class FreindController extends Controller
 {
@@ -14,8 +17,22 @@ class FreindController extends Controller
      */
     public function index(Request $request)
     {
+
+        try{
         $freinds = Freind::where('user_id',$request->id)->get();
         return $freinds;
+
+        if (! $freinds) {
+            throw new \Exception('no freinds yet');
+        }
+
+        return $this->success($freinds);
+
+
+    } catch (\Exception $e) {
+        Log::error($e->getMessage());
+        return null;
+    }
     }
 
     /**

@@ -6,6 +6,8 @@ use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 
 class LanguageController extends Controller
@@ -45,14 +47,23 @@ class LanguageController extends Controller
         ]);
 
 
-        if($validated){
-        Language::create([
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+        $language= Language::create([
             'curriculum_id'=>$request->curriculum_id,
             'name'=>$request->name,
             'level'=>$request->level,
 
         ]);
-        }
+        return $this->success($language);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
@@ -92,10 +103,21 @@ class LanguageController extends Controller
             'level' => 'required|min:1|max:255',
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
         $language = Language::findorFail($request->id);
         $language->name = $request->name;
         $language->level = $request->level;
         $language->save();
+        return $this->success($language);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

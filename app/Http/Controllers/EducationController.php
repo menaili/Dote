@@ -6,6 +6,8 @@ use App\Models\Education;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 
 class EducationController extends Controller
@@ -50,7 +52,13 @@ class EducationController extends Controller
                      
         ]);
 
-        Education::create([
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
+        $education= Education::create([
             'curriculum_id'=>$request->curriculum_id,
             'university'=>$request->university,
             'level'=>$request->level,
@@ -59,6 +67,12 @@ class EducationController extends Controller
             'end_date'=>$request->end_date,
 
         ]);
+        return $this->success($education);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
@@ -104,6 +118,12 @@ class EducationController extends Controller
                      
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
         $education = Education::findorFail($request->id);
  
         $education->university = $request->university;
@@ -112,6 +132,12 @@ class EducationController extends Controller
         $education->start_date = $request->start_date;
         $education->end_date = $request->end_date;
         $education->save();
+        return $this->success($education);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

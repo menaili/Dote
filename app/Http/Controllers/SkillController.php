@@ -6,7 +6,8 @@ use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class SkillController extends Controller
 {
@@ -44,11 +45,23 @@ class SkillController extends Controller
             
         ]);
 
-        Skill::create([
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
+        $skill=Skill::create([
             'curriculum_id'=>$request->curriculum_id,
             'name'=>$request->name,
             
         ]);
+        return $this->success($skill);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
@@ -89,9 +102,22 @@ class SkillController extends Controller
             
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
         $skill = Skill::findorFail($request->id);
         $skill->name = $request->name;
         $skill->save();
+
+        return $this->success($skill);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

@@ -6,6 +6,8 @@ use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 
 class WorkController extends Controller
@@ -50,7 +52,13 @@ class WorkController extends Controller
                      
         ]);
 
-        Work::create([
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
+        $work=Work::create([
             'curriculum_id'=>$request->curriculum_id,
             'position'=>$request->position,
             'company'=>$request->company,
@@ -59,6 +67,13 @@ class WorkController extends Controller
             'end_date'=>$request->end_date,
 
         ]);
+
+        return $this->success($work);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
@@ -103,6 +118,12 @@ class WorkController extends Controller
 
                      
         ]);
+        
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
 
         $work = Work::findorFail($request->id);
  
@@ -112,6 +133,12 @@ class WorkController extends Controller
         $work->start_date = $request->start_date;
         $work->end_date = $request->end_date;
         $work->save();
+        return $this->success($work);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

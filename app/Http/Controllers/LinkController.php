@@ -6,6 +6,9 @@ use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\TryCatch;
 
 class LinkController extends Controller
 {
@@ -45,13 +48,24 @@ class LinkController extends Controller
                      
         ]);
 
-        Link::create([
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+            $LINK= Link::create([
             'name'=>$request->name,
             'url'=>$request->url,
             'application_id'=>$request->application_id,
             'user_id'=>$user,
-
         ]);
+        return $this->success($LINK);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
+        
     }
 
     /**
@@ -92,11 +106,24 @@ class LinkController extends Controller
                      
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
         $link = Link::findorFail($request->id);
  
         $link->name = $request->name;
         $link->url = $request->url;
         $link->save();
+
+        return $this->success($link);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

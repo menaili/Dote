@@ -6,6 +6,8 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 
 class ContactController extends Controller
@@ -46,16 +48,25 @@ class ContactController extends Controller
 
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
 
+        try{
         
-        Contact::create([
+            $contact= Contact::create([
             'curriculum_id'=>$request->curriculum_id,
             'phone'=>$request->phone,
             'email'=>$request->email,
             'location'=>$request->location,
 
         ]);
-        
+        return $this->success($contact);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
@@ -97,11 +108,22 @@ class ContactController extends Controller
 
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
         $contact = Contact::findorFail($request->id);
         $contact->phone = $request->phone;
         $contact->email = $request->email;
         $contact->location = $request->location;
         $contact->save();
+        return $this->success($contact);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**

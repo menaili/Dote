@@ -7,6 +7,8 @@ use App\Models\Curriculum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class CurriculumController extends Controller
 {
@@ -55,13 +57,27 @@ class CurriculumController extends Controller
                      
         ]);
 
-        Curriculum::create([
-            'user_id'=>$user,
-            'name'=>$request->name,
-            'position'=>$request->position,
-            'bio'=>$request->bio,
-            'picture'=>$request->picture,
-        ]);
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
+            $CV=Curriculum::create([
+                'user_id'=>$user,
+                'name'=>$request->name,
+                'position'=>$request->position,
+                'bio'=>$request->bio,
+                'picture'=>$request->picture,
+            ]);
+
+            return $this->success($CV);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
+
     }
 
     /**
@@ -104,6 +120,13 @@ class CurriculumController extends Controller
                      
         ]);
 
+        if ($validated->fails()) {
+            throw new ValidationException($validated);
+        }
+
+        try{
+
+
         $CV = Curriculum::findorFail($request->id);
  
         $CV->name = $request->name;
@@ -111,6 +134,12 @@ class CurriculumController extends Controller
         $CV->bio = $request->bio;
         $CV->picture = $request->picture;
         $CV->save();
+        return $this->success($CV);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;       
+         }
     }
 
     /**
