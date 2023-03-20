@@ -29,6 +29,17 @@ use App\Http\Controllers\WorkController;
 */
 Route::get('/ProfileST', [DoController::class,'index']);
 
+
+
+Route::get('/test', [DoController::class,'test']);
+
+
+Route::get('/testing', function() {
+    return response()->json([
+     'stuff' => extension_loaded('pdo_mysql')
+    ]);
+ });
+
 // Route::post('/get-token', [Controller::class,'login']);
 
     Route::resource('/Applications', ApplicationController::class);

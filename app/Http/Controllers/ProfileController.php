@@ -6,6 +6,7 @@ use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\User;
 use App\Models\Phone;
@@ -21,13 +22,27 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
- 
-    $user = Auth::user()->id;
-        $profile = User::with('phone.adress','link.application.category','curriculum.education','curriculum.work','curriculum.skill','curriculum.language','curriculum.contact','curriculum.gallery')
-        ->where('id', $user)
-        ->get();
 
-        return $this->success(TestResource::collection($profile));
+        try {
+            // Use the `with` method to eager load the `profile` relationship
+            $user = Auth::user()->id;
+            $profile = User::with('phone.adress','link.application.category','curriculum.education','curriculum.work','curriculum.skill','curriculum.language','curriculum.contact','curriculum.gallery')
+            ->where('id', $user)
+            ->get();
+
+            if (! $profile) {
+                throw new \Exception('Profile data not found for user');
+            }
+
+            return $this->success(TestResource::collection($profile));
+
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
+
+
     }
 
     /**

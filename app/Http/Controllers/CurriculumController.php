@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CvResource;
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,10 +19,12 @@ class CurriculumController extends Controller
     {
         $user = Auth::user()->id;
 
-        $cv = Curriculum::with('education')
+        $cv = Curriculum::with('education','work','skill','language','contact','gallery')
         ->where('user_id', $user)
         ->get();
-        return $cv;
+       
+        return $this->success(CvResource::collection($cv));
+
     }
 
     /**

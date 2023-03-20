@@ -13,4 +13,12 @@ class DoController extends Controller
         ->get();
         return $profile;
     }
+
+
+    public function test(Request $request)
+    {
+        return response()->json([
+            'stuff' => phpinfo()
+           ]);
+    }
 }
