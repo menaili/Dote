@@ -64,28 +64,137 @@ class ApplicationSeeder extends Seeder
             'category_id'=>'1'
         ]);
 
+        Application::create([
+            'name'=>'Tinder',
+            'icon'=>'/icons/tinder.png',
+            'category_id'=>'1'
+        ]);
+
+        Application::create([
+            'name'=>'Twitch',
+            'icon'=>'/icons/twitch.png',
+            'category_id'=>'1'
+        ]);
+
         //***********---END SOCIAL MEDIA---*************************/
+        //************************************/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************/
         //***********---BUSINESS---*************************/
 
         Application::create([
-            'name'=>'linkedin',
+            'name'=>'Linkedin',
             'icon'=>'/icons/linkedin.png',
             'category_id'=>'2'
         ]);
 
         //***********---END BUSINESS---*************************/
+        //************************************/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************/
         //***********---MEDIA---*************************/
 
         Application::create([
-            'name'=>'youtube',
+            'name'=>'Youtube',
             'icon'=>'/icons/youtube.png',
             'category_id'=>'3'
         ]);
 
-        //***********---END MEDIA---*************************/
+        Application::create([
+            'name'=>'Netflix',
+            'icon'=>'/icons/netflix.png',
+            'category_id'=>'3'
+        ]);
 
+        Application::create([
+            'name'=>'Spotify',
+            'icon'=>'/icons/spotify.png',
+            'category_id'=>'3'
+        ]);
+
+        Application::create([
+            'name'=>'SoundCloud',
+            'icon'=>'/icons/SoundCloud.png',
+            'category_id'=>'3'
+        ]);
+
+        Application::create([
+            'name'=>'Apple music',
+            'icon'=>'/icons/apple music 2.png',
+            'category_id'=>'3'
+        ]);
+
+        //***********---END MEDIA---*************************/
+        //************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        //************************************/
+        //***********---STORE---**********************/
+        Application::create([
+            'name'=>'play store',
+            'icon'=>'/icons/play store.png',
+            'category_id'=>'4'
+        ]);
+
+        Application::create([
+            'name'=>'app store',
+            'icon'=>'/icons/app store.png',
+            'category_id'=>'4'
+        ]);
+
+        Application::create([
+            'name'=>'amazone',
+            'icon'=>'/icons/amazone.png',
+            'category_id'=>'4'
+        ]);
+
+        Application::create([
+            'name'=>'ebay',
+            'icon'=>'/icons/ebay.png',
+            'category_id'=>'4'
+        ]);
+        //***********---END STORE---**********************/
     }
 }

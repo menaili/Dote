@@ -26,5 +26,9 @@ class CategorySeeder extends Seeder
         Category::create([
             'name'=>'media'
         ]);
+
+        Category::create([
+            'name'=>'store'
+        ]);
     }
 }
