@@ -15,9 +15,13 @@ class TestResource extends JsonResource
     public function toArray($request)
     {
         /** @var \App\Models\User $this */
+        //$this->Load(['work']);
         return[
         'id' => $this->id,
         'cv' => $this->whenLoaded('curriculum'),
+        'link' => $this->whenLoaded('link'),
+        'phone' => $this->whenLoaded('phone'),
+
         'name' => $this->name,
         'email' => $this->email,
         'position' => $this->position,
