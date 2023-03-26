@@ -19,13 +19,27 @@ class CurriculumController extends Controller
      */
     public function index()
     {
+
+        try {
+
         $user = Auth::user()->id;
 
         $cv = Curriculum::with('education','work','skill','language','contact','gallery')
         ->where('user_id', $user)
         ->get();
-       
+        if ($cv->isEmpty()) {
+            return $this->error(CvResource::collection($cv));
+
+            throw new \Exception('CV data not found ');
+        }
+
         return $this->success(CvResource::collection($cv));
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
+       
 
     }
 

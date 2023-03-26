@@ -21,13 +21,15 @@ class DoController extends Controller
             ->where('id', $request->id)
             ->get();
 
-            if (! $profile) {
+            if ($profile->isEmpty()) {
+                return $this->error(TestResource::collection($profile));
                 throw new \Exception('Profile data not found for user');
             }
-
-            return $this->success(TestResource::collection($profile));
-
-
+            else{
+                return $this->success(TestResource::collection($profile));
+            }
+            
+       
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return null;

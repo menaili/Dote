@@ -29,7 +29,9 @@ class ProfileController extends Controller
             ->where('id', $user)
             ->get();
 
-            if (! $profile) {
+            if ($profile->isEmpty()) {
+                return $this->error(TestResource::collection($profile));
+
                 throw new \Exception('Profile data not found for user');
             }
 
