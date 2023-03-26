@@ -42,7 +42,6 @@ class WorkController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'curricula_id' => 'required|min:3|max:255',
             'position' => 'required|min:3|max:255',
             'company' => 'required|min:3|max:300',
             'description' => 'required|min:3|max:300',
@@ -109,7 +108,6 @@ class WorkController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'curricula_id' => 'required|min:3|max:255',
             'position' => 'required|min:3|max:255',
             'company' => 'required|min:3|max:300',
             'description' => 'required|min:3|max:300',

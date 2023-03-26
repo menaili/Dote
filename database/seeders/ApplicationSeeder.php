@@ -103,6 +103,19 @@ class ApplicationSeeder extends Seeder
             'category_id'=>'2'
         ]);
 
+        Application::create([
+            'name'=>'Behance',
+            'icon'=>'/icons/behance.png',
+            'category_id'=>'2'
+        ]);
+
+        Application::create([
+            'name'=>'Paypal',
+            'icon'=>'/icons/paypal.png',
+            'category_id'=>'2'
+        ]);
+
+
         //***********---END BUSINESS---*************************/
         //************************************/
 
@@ -169,7 +182,7 @@ class ApplicationSeeder extends Seeder
 
 
 
-        
+
         //************************************/
         //***********---STORE---**********************/
         Application::create([
@@ -195,6 +208,48 @@ class ApplicationSeeder extends Seeder
             'icon'=>'/icons/ebay.png',
             'category_id'=>'4'
         ]);
-        //***********---END STORE---**********************/
+        //***********---END STORE---**********************/        
+        //************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************/
+        //***********---GAMING---**********************/
+        Application::create([
+            'name'=>'Epic Games',
+            'icon'=>'/icons/epic games.png',
+            'category_id'=>'5'
+        ]);
+
+        Application::create([
+            'name'=>'Playstation',
+            'icon'=>'/icons/playstation.png',
+            'category_id'=>'5'
+        ]);
+
+        Application::create([
+            'name'=>'Xbox',
+            'icon'=>'/icons/xbox.png',
+            'category_id'=>'5'
+        ]);
+
+        //***********---END GAMING---**********************/
+        //************************************/
+
     }
 }

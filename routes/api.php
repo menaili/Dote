@@ -27,9 +27,6 @@ use App\Http\Controllers\WorkController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/ProfileST', [DoController::class,'index']);
-
-
 
 Route::get('/test', [DoController::class,'test']);
 
@@ -46,6 +43,7 @@ Route::get('/testing', function() {
   
     Route::resource('/Freinds', FreindController::class);
 
+    Route::resource('/userProfile', [DoController::class,'index']);
 
     Route::resource('/Profile', ProfileController::class)->middleware('auth:sanctum');
     Route::resource('/Links', LinkController::class)->middleware('auth:sanctum');

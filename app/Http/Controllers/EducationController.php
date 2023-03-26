@@ -42,7 +42,6 @@ class EducationController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'curricula_id' => 'required|min:3|max:255',
             'university' => 'required|min:3|max:255',
             'level' => 'required|min:3|max:300',
             'feild' => 'required|min:3|max:300',
@@ -108,7 +107,7 @@ class EducationController extends Controller
     {
         $validated = Validator::make($request->all(),
         [
-            'curricula_id' => 'required|min:3|max:255',
+            
             'university' => 'required|min:3|max:255',
             'level' => 'required|min:3|max:300',
             'feild' => 'required|min:3|max:300',

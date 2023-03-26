@@ -30,5 +30,9 @@ class CategorySeeder extends Seeder
         Category::create([
             'name'=>'store'
         ]);
+
+        Category::create([
+            'name'=>'gaming'
+        ]);
     }
 }
