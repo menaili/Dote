@@ -22,7 +22,7 @@ class DoController extends Controller
             ->get();
 
             if ($profile->isEmpty()) {
-                return $this->error(TestResource::collection($profile));
+                return'Profile data not found for user';
                 throw new \Exception('Profile data not found for user');
             }
             else{

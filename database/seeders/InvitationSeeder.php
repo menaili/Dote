@@ -17,9 +17,12 @@ class InvitationSeeder extends Seeder
     {
         Invitation::create([
             'sender'=> '2',
-            'receiver'=> '1',
-            'status'=> 'Backend',
-            
+            'receiver'=> '1',            
+        ]);
+
+        Invitation::create([
+            'sender'=> '3',
+            'receiver'=> '1',            
         ]);
     }
 }
