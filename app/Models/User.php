@@ -51,14 +51,14 @@ class User extends Authenticatable
 
     public function sender()
     {
-        return $this->belongsToMany(User::class,'requests');
+        return $this->belongsToMany(User::class,'invitations');
     }
 
 
     
     public function receiver()
     {
-        return $this->belongsToMany(User::class,'requests');
+        return $this->belongsToMany(User::class,'invitations');
     }
 
     public function phone()

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Http\Resources\InvitaionResource;
 
-class RequestController extends Controller
+
+class InvitationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +18,24 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        try {
+
+            $user = Auth::user()->id;
+            $req = Invitation::where('receiver', $user)
+            ->get();
+            if ($req->isEmpty()) {   
+                return 'You have not any request now!';
+                //throw new \Exception('request data not found ');
+            }
+            return $this->success(InvitaionResource::collection($req));
+            return $req;
+    
+            }catch (\Exception $e) {
+                Log::error($e->getMessage());
+                return null;
+            }
+
+      
     }
 
     /**
@@ -40,10 +62,10 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Invitation  $invitation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Invitation $invitation)
     {
         //
     }
@@ -51,10 +73,10 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Invitation  $invitation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Invitation $invitation)
     {
         //
     }
@@ -63,10 +85,10 @@ class RequestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Invitation  $invitation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Invitation $invitation)
     {
         //
     }
@@ -74,10 +96,10 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Invitation  $invitation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Invitation $invitation)
     {
         //
     }

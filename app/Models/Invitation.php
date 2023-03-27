@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class Invitation extends Model
 {
+    use HasFactory;
     use HasFactory;
     protected $fillable = [
         'sender',
@@ -14,5 +15,4 @@ class Request extends Model
         'status',
     ];
 
-    
 }

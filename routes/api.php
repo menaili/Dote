@@ -13,9 +13,12 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurriculumController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WorkController;
+use App\Models\Invitation;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +56,7 @@ Route::get('/testing', function() {
     Route::resource('/Skill', SkillController::class)->middleware('auth:sanctum');
     Route::resource('/Language', LanguageController::class)->middleware('auth:sanctum');
     Route::resource('/Contact', ContactController::class)->middleware('auth:sanctum');
+    Route::resource('/Invitation', InvitationController::class)->middleware('auth:sanctum');
 
 
 // Route::group([

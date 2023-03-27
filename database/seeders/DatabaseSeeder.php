@@ -30,11 +30,8 @@ class DatabaseSeeder extends Seeder
             LinkSeeder::class,
             AdressSeeder::class,
             PhoneSeeder::class,
-            FreindSeeder::class
-
-
-
-
+            FreindSeeder::class,
+            InvitationSeeder::class
 
         ]);
     }
