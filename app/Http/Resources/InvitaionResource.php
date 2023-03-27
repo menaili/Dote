@@ -17,7 +17,6 @@ class InvitaionResource extends JsonResource
        /** @var \App\Models\User $this */
        return[
         'id' => $this->id,
-        'reciver' => $this->reciver,
         'sender' => $this->sender,
         'status' => $this->status,
 
