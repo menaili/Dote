@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 class CurriculumController extends Controller
 {
     /**
@@ -28,11 +29,9 @@ class CurriculumController extends Controller
         ->where('user_id', $user)
         ->get();
         if ($cv->isEmpty()) {
-            return $this->error(CvResource::collection($cv));
-
+            return $this->errorCV(CvResource::collection($cv));
             throw new \Exception('CV data not found ');
         }
-
         return $this->success(CvResource::collection($cv));
 
         }catch (\Exception $e) {
@@ -166,5 +165,20 @@ class CurriculumController extends Controller
     {
         Curriculum::where('id', $request->id)->delete();
 
+    }
+
+    public function errorCV(
+        mixed $data,
+        int $status = 400,
+        bool $success = false,
+        string $message = "CV data not found ",
+    ): JsonResponse
+    {
+        return Response::json([
+            "status"  => $status,
+            "success" => $success,
+            "message" => $message,
+            ...$data,
+        ], $status);
     }
 }
