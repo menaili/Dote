@@ -58,8 +58,15 @@ class LanguageController extends Controller
             'level'=>$request->level,
 
         ]);
-        return $this->success($language);
 
+        if ($language->wasRecentlyCreated) {
+
+            return $this->success($language);
+        
+        } else {
+            
+            return response()->json(['error' => 'Failed to create language'], 500);
+        }
         }catch (\Exception $e) {
             Log::error($e->getMessage());
             return null;       

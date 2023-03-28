@@ -62,13 +62,15 @@ class ContactController extends Controller
 
         ]);
 
-            if (!$contact->id){
-                dd("gg");
-                return "gg ";
-            }else{
-                return $this->success($contact);
 
-            }
+        if ($contact->wasRecentlyCreated) {
+
+            return $this->success($contact);
+        
+        } else {
+            
+            return response()->json(['error' => 'Failed to create contact'], 500);
+        }
 
         }catch (\Exception $e) {
             Log::error($e->getMessage());

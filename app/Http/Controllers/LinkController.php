@@ -59,8 +59,15 @@ class LinkController extends Controller
             'application_id'=>$request->application_id,
             'user_id'=>$user,
         ]);
-        return $this->success($LINK);
+        
+        if ($LINK->wasRecentlyCreated) {
 
+            return $this->success($LINK);
+        
+        } else {
+            
+            return response()->json(['error' => 'Failed to create link'], 500);
+        }
         }catch (\Exception $e) {
             Log::error($e->getMessage());
             return null;       

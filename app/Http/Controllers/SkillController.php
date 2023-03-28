@@ -56,8 +56,15 @@ class SkillController extends Controller
             'name'=>$request->name,
             
         ]);
-        return $this->success($skill);
 
+        if ($skill->wasRecentlyCreated) {
+
+            return $this->success($skill);
+        
+        } else {
+            
+            return response()->json(['error' => 'Failed to create skill'], 500);
+        }
         }catch (\Exception $e) {
             Log::error($e->getMessage());
             return null;       

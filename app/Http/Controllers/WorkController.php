@@ -67,8 +67,14 @@ class WorkController extends Controller
 
         ]);
 
-        return $this->success($work);
+            if ($work->wasRecentlyCreated) {
 
+                return $this->success($work);
+            
+            } else {
+                
+                return response()->json(['error' => 'Failed to create work'], 500);
+            }
         }catch (\Exception $e) {
             Log::error($e->getMessage());
             return null;       
