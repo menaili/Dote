@@ -61,7 +61,14 @@ class ContactController extends Controller
             'location'=>$request->location,
 
         ]);
-        return $this->success($contact);
+
+            if (!$contact->id){
+                dd("gg");
+                return "gg ";
+            }else{
+                return $this->success($contact);
+
+            }
 
         }catch (\Exception $e) {
             Log::error($e->getMessage());
