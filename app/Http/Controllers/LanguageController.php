@@ -81,7 +81,8 @@ class LanguageController extends Controller
      */
     public function show(Language $language)
     {
-        //
+        $lang=Language::findorFail($language);
+        return $lang;
     }
 
     /**
