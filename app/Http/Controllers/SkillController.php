@@ -79,7 +79,8 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        //
+        $skill_edit=Skill::findorFail($skill);
+        return $skill_edit;
     }
 
     /**

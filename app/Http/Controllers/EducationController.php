@@ -93,7 +93,8 @@ class EducationController extends Controller
      */
     public function edit(Education $education)
     {
-        //
+        $education_edit=Education::findorFail($education);
+        return $education_edit;
     }
 
     /**
