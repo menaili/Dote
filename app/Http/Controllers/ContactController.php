@@ -97,7 +97,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        $contact_edit=Contact::findorFail($contact);
+        return $contact_edit;
     }
 
     /**
