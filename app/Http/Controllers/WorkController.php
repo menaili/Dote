@@ -100,7 +100,8 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        //
+        $work_edit=Work::findorFail($work);
+        return $work_edit;
     }
 
     /**
