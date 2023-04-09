@@ -5,6 +5,7 @@ use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use App\Models\Curriculum;
 use App\Models\Phone;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -42,5 +43,28 @@ class DoController extends Controller
         return response()->json([
             'stuff' => phpinfo()
            ]);
+    }
+
+    public function CvProfile()
+    {
+
+        try {
+
+        $user = Auth::user()->id;
+
+        $cv = Curriculum::where('user_id', $user)
+        ->get();
+        if ($cv->isEmpty()) {
+            return $this->errorCV($cv);
+            throw new \Exception('CV data not found ');
+        }
+        return $this->success($cv);
+
+        }catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
+       
+
     }
 }
