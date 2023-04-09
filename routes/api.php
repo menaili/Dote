@@ -47,6 +47,7 @@ Route::get('/testing', function() {
     Route::resource('/Freinds', FreindController::class);
 
     Route::get('/userProfile', [DoController::class,'index']);
+    Route::get('/CvProfile', [DoController::class,'CvProfile'])->middleware('auth:sanctum');
 
     Route::resource('/Profile', ProfileController::class)->middleware('auth:sanctum');
     Route::resource('/Links', LinkController::class)->middleware('auth:sanctum');
