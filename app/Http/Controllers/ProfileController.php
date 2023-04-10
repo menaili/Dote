@@ -25,7 +25,7 @@ class ProfileController extends Controller
         try {
             // Use the `with` method to eager load the `profile` relationship
             $user = Auth::user()->id;
-            $profile = User::with('phone.adress','link.application.category','curriculum')
+            $profile = User::with('phone.adress')
             ->where('id', $user)
             ->get();
 

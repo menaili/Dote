@@ -19,7 +19,26 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            // Use the `with` method to eager load the `profile` relationship
+            $user = Auth::user()->id;
+            $link = Link::with('application.category')
+            ->where('user_id', $user)
+            ->get();
+
+            if ($link->isEmpty()) {
+                return $this->error($link);
+
+                throw new \Exception('Profile data not found for user');
+            }
+
+            return $this->success($link);
+
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
     }
 
     /**
