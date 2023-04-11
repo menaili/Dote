@@ -65,7 +65,6 @@ class EducationController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
 
-                     
         ]);
 
         if ($validated->fails()) {
