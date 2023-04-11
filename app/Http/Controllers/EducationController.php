@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 
 class EducationController extends Controller
 {
@@ -27,7 +28,7 @@ class EducationController extends Controller
             if ($education->isEmpty()) {
                 return $this->error(EducationResource::collection($education)->response()->getData(true));
 
-                throw new \Exception('Profile data not found for user');
+                throw new \Exception('education data not found for user');
             }
 
             return $this->success(EducationResource::collection($education)->response()->getData(true));
@@ -166,5 +167,20 @@ class EducationController extends Controller
     public function destroy(Request $request)
     {
         Education::where('id', $request->id)->delete();
+    }
+
+    public function erroreducation(
+        mixed $data,
+        int $status = 400,
+        bool $success = false,
+        string $message = "education data not found ",
+    ): JsonResponse
+    {
+        return Response::json([
+            "status"  => $status,
+            "success" => $success,
+            "message" => $message,
+            ...$data,
+        ], $status);
     }
 }
