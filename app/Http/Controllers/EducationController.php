@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EducationResource;
+use App\Models\Curriculum;
 use App\Models\Education;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,9 +19,24 @@ class EducationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+         try {
+            $user = Auth::user()->id;
+            $education = Education::where('curriculum_id', $request->curriculum_id)->paginate(3);
+            if ($education->isEmpty()) {
+                return $this->error(EducationResource::collection($education)->response()->getData(true));
+
+                throw new \Exception('Profile data not found for user');
+            }
+
+            return $this->success(EducationResource::collection($education)->response()->getData(true));
+
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
     }
 
     /**
