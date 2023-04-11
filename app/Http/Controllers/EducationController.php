@@ -23,10 +23,9 @@ class EducationController extends Controller
     public function index(Request $request)
     {
          try {
-            $user = Auth::user()->id;
             $education = Education::where('curriculum_id', $request->curriculum_id)->paginate(3);
             if ($education->isEmpty()) {
-                return $this->error(EducationResource::collection($education)->response()->getData(true));
+                return $this->erroreducation(EducationResource::collection($education)->response()->getData(true));
 
                 throw new \Exception('education data not found for user');
             }
