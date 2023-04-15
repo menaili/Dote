@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,14 +20,14 @@ class ContactController extends Controller
     public function index(Request $request)
     {
          try {
-            $education = Contact::where('curriculum_id', $request->curriculum_id)->paginate(3);
-            if ($education->isEmpty()) {
-                return $this->erroreducation(ContactResource::collection($education)->response()->getData(true));
+            $contact = Contact::where('curriculum_id', $request->curriculum_id)->paginate(3);
+            if ($contact->isEmpty()) {
+                return $this->erroreducation(ContactResource::collection($contact)->response()->getData(true));
 
                 throw new \Exception('education data not found for user');
             }
 
-            return $this->success(ContactResource::collection($education)->response()->getData(true));
+            return $this->success(ContactResource::collection($contact)->response()->getData(true));
 
 
         } catch (\Exception $e) {
