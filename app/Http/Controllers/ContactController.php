@@ -17,9 +17,23 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+         try {
+            $education = Contact::where('curriculum_id', $request->curriculum_id)->paginate(3);
+            if ($education->isEmpty()) {
+                return $this->erroreducation(ContactResource::collection($education)->response()->getData(true));
+
+                throw new \Exception('education data not found for user');
+            }
+
+            return $this->success(ContactResource::collection($education)->response()->getData(true));
+
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
     }
 
     /**
