@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LanguageResource;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,12 +23,12 @@ class LanguageController extends Controller
          try {
             $language = Language::where('curriculum_id', $request->curriculum_id)->paginate(3);
             if ($language->isEmpty()) {
-                return $this->erroreducation(ContactResource::collection($language)->response()->getData(true));
+                return $this->erroreducation(LanguageResource::collection($language)->response()->getData(true));
 
                 throw new \Exception('education data not found for user');
             }
 
-            return $this->success(ContactResource::collection($language)->response()->getData(true));
+            return $this->success(LanguageResource::collection($language)->response()->getData(true));
 
 
         } catch (\Exception $e) {
