@@ -17,9 +17,23 @@ class LanguageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+         try {
+            $language = Language::where('curriculum_id', $request->curriculum_id)->paginate(3);
+            if ($language->isEmpty()) {
+                return $this->erroreducation(ContactResource::collection($language)->response()->getData(true));
+
+                throw new \Exception('education data not found for user');
+            }
+
+            return $this->success(ContactResource::collection($language)->response()->getData(true));
+
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
     }
 
     /**
