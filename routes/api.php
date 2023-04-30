@@ -32,6 +32,8 @@ use App\Models\Invitation;
 */
 
 Route::get('/test', [DoController::class,'test']);
+Route::get('/get', [DoController::class,'CvProallfile']);
+Route::get('/gett', [DoController::class,'all']);
 
 
 Route::get('/testing', function() {

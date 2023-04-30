@@ -1,0 +1,128 @@
+code,created_at,flag,id,name,updated_at
+1,+213,dz,dzflag,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,+33,fr,frflag,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+category_id,created_at,icon,id,name,updated_at
+1,Facebook,/icons/facebook.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,Instagram,/icons/instagram.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+3,Twitter,/icons/twitter.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+4,Whatsapp,/icons/whatsapp.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+5,Telegram,/icons/telegram.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+6,Messenger,/icons/messenger.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+7,Skype,/icons/skype.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+8,VK,/icons/vk.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+9,Tinder,/icons/tinder.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+10,Twitch,/icons/twitch.png,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+11,Linkedin,/icons/linkedin.png,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+12,Behance,/icons/behance.png,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+13,Paypal,/icons/paypal.png,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+14,Youtube,/icons/youtube.png,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+15,Netflix,/icons/netflix.png,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+16,Spotify,/icons/spotify.png,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+17,SoundCloud,/icons/SoundCloud.png,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+18,"Apple music","/icons/apple music 2.png",3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+19,"play store","/icons/play store.png",4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+20,"app store","/icons/app store.png",4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+21,amazone,/icons/amazone.png,4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+22,ebay,/icons/ebay.png,4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+23,"Epic Games","/icons/epic games.png",5,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+24,Playstation,/icons/playstation.png,5,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+25,Xbox,/icons/xbox.png,5,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+created_at,icon,id,name,updated_at
+1,social,,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,bussines,,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+3,media,,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+4,store,,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+5,gaming,,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+created_at,curriculum_id,email,id,location,phone,updated_at
+3,0656059021,exemple@exemple.com,"algeria, souk ahras, drea",1,"2023-03-27 13:00:14","2023-03-27 13:00:14"
+69,0656059021,exemple@exemple.com,"algeria, souk ahras, drea",1,"2023-03-28 10:21:10","2023-03-28 10:21:10"
+bio,created_at,id,name,picture,position,updated_at,user_id
+1,harounfffffffffffff,devvff,ffffffffff,"The picture field is required","2023-03-27 12:57:52","2023-03-27 12:57:52",1
+3,bbbbbb,devvff,ffffffffff,"The picture field is required","2023-04-11 16:05:54","2023-04-11 16:05:54",1
+created_at,curriculum_id,end_date,feild,id,level,start_date,university,updated_at
+6,soukahras,master,"dénie logiciel",2020-09-15,2022-09-15,3,"2023-04-11 16:14:57","2023-04-11 16:14:57"
+7,soukahras,master,"dénie logiciel",2020-09-15,2022-09-15,3,"2023-04-11 16:15:32","2023-04-11 16:15:32"
+8,soukahras,master,"dénie logiciel",2020-09-15,2022-09-15,3,"2023-04-11 16:16:02","2023-04-11 16:16:02"
+connection,exception,failed_at,id,payload,queue,uuid
+created_at,freind_id,id,updated_at,user_id
+1,1,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,1,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+3,1,4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+4,2,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+5,2,4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+6,3,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+7,3,4,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+8,4,2,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+9,4,3,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+10,4,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+created_at,curriculum_id,id,picture,title,updated_at
+created_at,id,receiver,sender,status,updated_at
+1,2,1,invited,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,3,1,invited,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+created_at,curriculum_id,id,level,name,updated_at
+3,english,b1,1,"2023-03-27 13:00:07","2023-03-27 13:00:07"
+4,english,b1,1,"2023-03-28 11:20:36","2023-03-28 11:20:36"
+application_id,created_at,id,name,updated_at,url,user_id
+1,1,1,facebook,faceURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,2,1,instagram,instaURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+3,4,1,youtube,youtURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+4,1,2,facebook,faceURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+5,2,2,instagram,instaURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+6,3,2,linkedin,linkURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+7,2,3,instagram,instaURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+8,3,3,linkedin,linkURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+9,1,4,facebook,faceURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+10,2,4,instagram,instaURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+11,3,4,linkedin,linkURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+12,4,4,youtube,youtURL,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+batch,id,migration
+1,2014_10_12_000000_create_users_table,1
+2,2014_10_12_100000_create_password_resets_table,1
+3,2019_08_19_000000_create_failed_jobs_table,1
+4,2019_12_14_000001_create_personal_access_tokens_table,1
+5,2022_12_09_153114_create_categories_table,1
+6,2022_12_09_153115_create_applications_table,1
+7,2022_12_09_153703_create_links_table,1
+8,2022_12_09_155120_create_requests_table,1
+9,2022_12_13_161442_create_freinds_table,1
+10,2022_12_17_142622_create_adresses_table,1
+11,2022_12_17_142623_create_phones_table,1
+12,2022_12_19_174507_add_position_to_users,1
+13,2022_12_19_174948_add_bio_and_picture_and_cover_picture_to_users,1
+14,2022_12_30_202539_add_adress_to_users,1
+15,2023_03_14_132037_create_curricula_table,1
+16,2023_03_14_135716_add_user_id_to_curricula,1
+17,2023_03_14_144223_create_education_table,1
+18,2023_03_14_144949_create_works_table,1
+19,2023_03_14_145405_create_skills_table,1
+20,2023_03_14_145614_create_languages_table,1
+21,2023_03_14_150409_create_galleries_table,1
+22,2023_03_14_150840_create_contacts_table,1
+23,2023_03_15_083118_rename_education_column,1
+24,2023_03_15_083410_rename_works_column,1
+25,2023_03_15_083700_add_curriculum_id_to_skills,1
+26,2023_03_15_084149_rename_languages_column,1
+27,2023_03_15_084303_rename_galleries_column,1
+28,2023_03_15_084352_rename_contacts_column,1
+29,2023_03_27_112316_create_invitations_table,1
+created_at,email,token
+abilities,created_at,expires_at,id,last_used_at,name,token,tokenable_id,tokenable_type,updated_at
+1,"App\Models\User",1,mobile,d770b836c7316fb61c0d7619977411fc5171bb6d580c4880101f1c0b1d3ddb6f,"[""*""]","2023-04-07 19:37:47",,"2023-03-27 12:41:10","2023-04-07 19:37:47"
+2,"App\Models\User",1,mobile,50840cbaa72d1c45b8f7a83799b069bab17557468bccd1704431fa17587fd3b0,"[""*""]","2023-04-11 15:55:06",,"2023-04-09 13:01:11","2023-04-11 15:55:06"
+3,"App\Models\User",1,mobile,77141430f374a4385b360b0bf5bf866a1a54bffff029151cdccadd14a729803f,"[""*""]","2023-04-17 12:57:30",,"2023-04-11 15:55:54","2023-04-17 12:57:30"
+adress_id,created_at,id,number,updated_at,user_id
+1,659357631,1,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+2,655487898,2,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+3,798589656,3,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+4,554566987,4,1,"2023-03-27 12:40:31","2023-03-27 12:40:31"
+created_at,id,receiver,sender,status,updated_at
+created_at,curriculum_id,id,name,updated_at
+3,laravel,"2023-03-27 13:00:11","2023-03-27 13:00:11",1
+adress,bio,cover_picture,created_at,email,email_verified_at,id,name,password,picture,position,remember_token,updated_at
+1,"Menaili Haroun Errachide",menailimic@gmail.com,,$2y$10$646tmNW4vkcOn1GbFeO5J.Mj0pYDlfnACmUqDpL2ZvMxEFaDz/8DC,,"2023-03-27 12:40:31","2023-03-27 12:40:31",Backend,,,,
+2,"Farhi Oussama baha",farhiouss@gmail.com,,$2y$10$nYdyCqltf2283mewu5sb1uV5quV2GtE4g0JgrtF9L1xALo3enxYQC,,"2023-03-27 12:40:31","2023-03-27 12:40:31",frontend,,,,
+3,Jakoub,jakoub16@gmail.com,,$2y$10$S9r/L7phBP3fAK94YLQFt.OSBLozOPZ9hl0tZLAl1t1Sb/hemscRO,,"2023-03-27 12:40:31","2023-03-27 12:40:31","ui designer",,,,
+4,"Riyad Djeddah",riyad41@gmail.com,,$2y$10$Dbl3Y0Gt7nwZHzaai9dmPuLFc.fWgshi5ne5q5/vVo0LXKKelg8mi,,"2023-03-27 12:40:31","2023-03-27 12:40:31",frontend,,,,
+5,"Haroun echar",menailimic41@gmail.com,,$2y$10$mORkpcIofNENn/JZg23PGOo6vqU9jRQHJAHB8RLj1X3K0oTcKxhlG,,"2023-03-31 12:30:56","2023-03-31 12:30:56",,,,,
+company,created_at,curriculum_id,description,end_date,id,position,start_date,updated_at
+3,frontend,dypix,"work as web developer",2020-09-15,2025-09-15,1,"2023-03-27 13:00:04","2023-03-27 13:00:04"
